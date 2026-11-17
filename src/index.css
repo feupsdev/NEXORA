@@ -1,0 +1,113 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #3988ff;
+  --accent-rgb: 57, 136, 255;
+  --page-background: #080e19;
+  --panel-background: #101d30;
+  --page-glow: rgba(57, 136, 255, 0.20);
+  --accent-contrast: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--page-background);
+}
+
+body {
+  margin: 0;
+  color: #e8edf7;
+  background: var(--page-background);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s ease;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 8%, var(--page-glow), transparent 55%),
+    var(--page-background);
+  transition: background 0.6s ease;
+}
+
+.theme-header {
+  background: color-mix(in srgb, var(--page-background) 85%, transparent);
+  border-color: rgba(var(--accent-rgb), 0.18);
+}
+
+.theme-panel {
+  background: var(--panel-background);
+  border-color: rgba(var(--accent-rgb), 0.22);
+}
+
+.theme-section {
+  background: color-mix(in srgb, var(--panel-background) 45%, var(--page-background));
+}
+
+.theme-glow {
+  background: radial-gradient(
+    ellipse at center,
+    var(--page-glow),
+    transparent 70%
+  );
+}
+
+.theme-button {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transition: background 0.4s, color 0.4s;
+}
+
+.theme-button:hover {
+  filter: brightness(1.15);
+}
+
+.theme-outline {
+  border-color: rgba(var(--accent-rgb), 0.45);
+}
+
+.theme-selected {
+  border-color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.15);
+}
+
+.theme-icon {
+  color: var(--accent);
+}
+
+.theme-link {
+  color: var(--accent);
+}
+
+.theme-stage {
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      var(--page-glow),
+      transparent 70%
+    );
+}
+
+.rise {
+  animation: rise .9s cubic-bezier(.2,.7,.2,1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { animation: none; }
+  * { transition-duration: .01ms !important; }
+}
